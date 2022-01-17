@@ -1,4 +1,4 @@
-module docDev/generate_docs
+module dev.azure.com/ignw/DocAutomation/_git/generate_docs
 
 go 1.16
 
