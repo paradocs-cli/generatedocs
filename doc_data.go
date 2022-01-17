@@ -11,7 +11,7 @@ import (
 )
 
 //GetDirs takes a string argument and returns a slice of string of directories that containt terraform files
-func GetDirs(s string) ([]string, error) {
+func GetDirs() ([]string, error) {
 	var mods []string
 	var dirs []string
 	err := filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
