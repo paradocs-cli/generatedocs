@@ -64,11 +64,13 @@ type Provider struct {
 type Dirs struct {
 	Name string
 	ModificationTime time.Time
+	IsTerraDir bool
 }
 
 type File struct {
 	Name string
 	ModificationTime time.Time
+	IsTfFile bool
 }
 
 type RepoInfo struct {

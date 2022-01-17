@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 //GetDirs takes a string argument and returns a slice of string of directories that containt terraform files
@@ -121,6 +122,7 @@ func GetData(ls []string) (Stats, error) {
 	return Final, nil
 }
 
+//GetDirData iterates through directories and returns data about each directory
 func GetDirData(ls []string) (RepoInfo, error){
 	var dirs RepoInfo
 	for _, v := range ls {
@@ -133,6 +135,11 @@ func GetDirData(ls []string) (RepoInfo, error){
 			if z.IsDir() {
 				theDir.Name = z.Name()
 				theDir.ModificationTime = z.ModTime()
+				if tfconfig.IsModuleDir(z.Name()) {
+					theDir.IsTerraDir = true
+				} else {
+					theDir.IsTerraDir = false
+				}
 				dirs.Directories = append(dirs.Directories, theDir)
 			}
 		}
@@ -140,6 +147,7 @@ func GetDirData(ls []string) (RepoInfo, error){
 	return dirs, nil
 }
 
+//GetFileInfo iterates through files and returns data about each file
 func GetFileInfo(ls []string) (RepoInfo, error) {
 	var files RepoInfo
 	for _, v := range ls {
@@ -153,6 +161,11 @@ func GetFileInfo(ls []string) (RepoInfo, error) {
 				var file File
 				file.Name = x.Name()
 				file.ModificationTime = x.ModTime()
+				if strings.Contains(x.Name(), ".tf") {
+					file.IsTfFile = true
+				} else {
+					file.IsTfFile = false
+				}
 				files.Files = append(files.Files, file)
 			}
 		}
