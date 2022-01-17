@@ -23,7 +23,7 @@ func GetDirs(s string) ([]string, error) {
 		return nil
 	})
 	if err != nil {
-		return mods, fmt.Errorf("Unable to parse directory: %v", err)
+		return mods, fmt.Errorf(err.Error())
 	}
 	for _, v := range dirs {
 		check := tfconfig.IsModuleDir(v)
@@ -40,7 +40,7 @@ func GetData(ls []string) (Stats, error) {
 	for _, v := range ls {
 		config, err := tfconfig.LoadModule(v)
 		if err != nil {
-			return Final, fmt.Errorf("Failed to load module: %v", v)
+			return Final, fmt.Errorf(err.Error())
 		}
 		newVars := config.Variables
 		newResources := config.ManagedResources
