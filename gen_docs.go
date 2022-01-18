@@ -22,7 +22,7 @@ func WriteMarkdownTerra(w Stats) os.File {
 
 	err = tmpls.Execute(f, w)
 	if err != nil {
-		fmt.Println("Unable to execute template for WriteMarkdown")
+		fmt.Println(err.Error())
 		os.Exit(1)
 	}
 
