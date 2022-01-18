@@ -73,6 +73,7 @@ func GetData(ls []string) (Stats, error) {
 				ProviderAlias:          x.Provider.Alias,
 				SourcePositionFileName: fmt.Sprintf("./%s", x.Pos.Filename),
 				SourcePositionLine:     strconv.Itoa(x.Pos.Line),
+				Link: fmt.Sprintf("https://registry.terraform.io/providers/hashicorp/%s/latest/docs/resources/%s", x.Provider.Name, strings.TrimPrefix(x.Type, fmt.Sprintf("%s_", x.Provider.Name))),
 			}
 			Final.Resources = append(Final.Resources, someResources)
 		}

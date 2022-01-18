@@ -50,7 +50,7 @@ const TerraDocGeneric = `
 <tbody>
 <tr>
 <td>{{.Mode}}</td>
-<td>{{.Type}}</td>
+<td><a href="{{.Link}}">{{.Type}}</td>
 <td>{{.Name}}</td>
 <td>{{.ProviderName}}</td>
 <td>{{.ProviderAlias}}</td>

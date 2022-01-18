@@ -2,6 +2,7 @@ package generate_docs
 
 import "time"
 
+
 type Stats struct {
 	Vars      []Var      `json:"variables,omitempty"`
 	Resources []Resource `json:"resources,omitempty"`
@@ -28,6 +29,7 @@ type Resource struct {
 	ProviderAlias          string `json:"provider_alias,omitempty"`
 	SourcePositionFileName string `json:"source_file_name,omitempty"`
 	SourcePositionLine     string `json:"source_position_line,omitempty"`
+	Link string
 }
 
 type Module struct {
@@ -44,6 +46,7 @@ type Output struct {
 	Sensitive              bool   `json:"module_version,omitempty"`
 	SourcePositionFileName string `json:"source_file_name,omitempty"`
 	SourcePositionLine     string `json:"source_position_line,omitempty"`
+	Link string
 }
 
 type Data struct {
@@ -54,6 +57,7 @@ type Data struct {
 	Senstive               bool   `json:"module_version,omitempty"`
 	SourcePositionFileName string `json:"source_file_name,omitempty"`
 	SourcePositionLine     string `json:"source_position_line,omitempty"`
+	Link string
 }
 
 type Provider struct {
