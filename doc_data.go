@@ -11,10 +11,10 @@ import (
 )
 
 //GetDirs takes a string argument and returns a slice of string of directories that containt terraform files
-func GetDirs() ([]string, error) {
+func GetDirs(s string) ([]string, error) {
 	var mods []string
 	var dirs []string
-	err := filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(s, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -35,9 +35,13 @@ func GetDirs() ([]string, error) {
 }
 
 //GetData takes a slice of sting and creates JSON objects from data retrieved such as variables, resources, modules, etc
-func GetData(ls []string) (Stats, error) {
+func GetData(s string) (Stats, error) {
 	var Final Stats
-	for _, v := range ls {
+	get, err := GetDirs(s)
+	if err != nil {
+		return Final, fmt.Errorf(err.Error())
+	}
+	for _, v := range get {
 		config, err := tfconfig.LoadModule(v)
 		if err != nil {
 			return Final, fmt.Errorf(err.Error())
@@ -124,9 +128,13 @@ func GetData(ls []string) (Stats, error) {
 }
 
 //GetDirData iterates through directories and returns data about each directory
-func GetDirData(ls []string) (RepoInfo, error){
+func GetDirData(s string) (RepoInfo, error){
 	var dirs RepoInfo
-	for _, v := range ls {
+	get, err := GetDirs(s)
+	if err != nil {
+		return dirs, fmt.Errorf(err.Error())
+	}
+	for _, v := range get {
 		read, err := ioutil.ReadDir(v)
 		if err != nil {
 			return dirs, fmt.Errorf(err.Error())
@@ -149,9 +157,13 @@ func GetDirData(ls []string) (RepoInfo, error){
 }
 
 //GetFileInfo iterates through files and returns data about each file
-func GetFileInfo(ls []string) (RepoInfo, error) {
+func GetFileInfo(s string) (RepoInfo, error) {
 	var files RepoInfo
-	for _, v := range ls {
+	get, err := GetDirs(s)
+	if err != nil {
+		return files, fmt.Errorf(err.Error())
+	}
+	for _, v := range get {
 		grep, err := ioutil.ReadDir(v)
 		if err != nil {
 			return files, fmt.Errorf(err.Error())
