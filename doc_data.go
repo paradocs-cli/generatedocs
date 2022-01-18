@@ -141,18 +141,14 @@ func GetDirData(s string) (RepoInfo, error){
 		}
 		for _, z := range read {
 			var theDir Dirs
-			if z.IsDir() && tfconfig.IsModuleDir(z.Name()) {
 				theDir.Name = z.Name()
 				theDir.ModificationTime = z.ModTime()
-				theDir.IsTerraDir = true
+				if tfconfig.IsModuleDir(z.Name()) {
+					theDir.IsTerraDir = true
+				} else {
+					theDir.IsTerraDir = false
+				}
 				dirs.Directories = append(dirs.Directories, theDir)
-			}else {
-				theDir.Name = z.Name()
-				theDir.ModificationTime = z.ModTime()
-				theDir.IsTerraDir = false
-				dirs.Directories = append(dirs.Directories, theDir)
-
-			}
 		}
 	}
 	return dirs, nil
