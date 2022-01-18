@@ -112,6 +112,7 @@ func GetData(s string) (Stats, error) {
 				ProviderAlias:          u.Provider.Alias,
 				SourcePositionFileName: u.Pos.Filename,
 				SourcePositionLine:     strconv.Itoa(u.Pos.Line),
+				Link: DataSourceLinks(u),
 			}
 			Final.Datas = append(Final.Datas, someData)
 		}
@@ -125,6 +126,13 @@ func GetData(s string) (Stats, error) {
 		}
 	}
 	return Final, nil
+}
+
+func DataSourceLinks(r *tfconfig.Resource) string{
+	if r.Type == "external" {
+		return fmt.Sprintf("https://registry.terraform.io/providers/hashicorp/%s/latest/docs/data-sources/data_source", r.Provider.Name)
+	}
+	return fmt.Sprintf("https://registry.terraform.io/providers/hashicorp/%s/latest/docs/data-sources/%s", r.Provider.Name, strings.TrimPrefix(r.Type, fmt.Sprintf("%s_", r.Provider.Name)))
 }
 
 //GetDirData iterates through directories and returns data about each directory

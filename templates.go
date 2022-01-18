@@ -101,7 +101,7 @@ const TerraDocGeneric = `
 <tbody>
 <tr>
 <td>{{.Name}}</td>
-<td>{{.DataType}}</td>
+<td><a href="{{.Link}}">{{.DataType}}</a></td>
 <td>{{.ProviderName}}</td>
 <td>{{.ProviderAlias}}</td>
 <td>{{.SourcePositionFileName}}</td>
