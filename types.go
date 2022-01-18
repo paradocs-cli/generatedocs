@@ -62,6 +62,7 @@ type Data struct {
 type Provider struct {
 	Name  string `json:"name,omitempty"`
 	Alias string `json:"alias,omitempty"`
+	Link  string
 }
 
 type Dirs struct {

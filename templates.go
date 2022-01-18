@@ -122,7 +122,7 @@ const TerraDocGeneric = `
 {{range .Providers}}
 <tbody>
 <tr>
-<td>{{.Name}}</td>
+<td><a href="{{.Link}}">{{.Name}}</a></td>
 <td>{{.Alias}}</td>
 </tr>
 </tbody>

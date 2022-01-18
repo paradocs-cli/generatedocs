@@ -121,6 +121,7 @@ func GetData(s string) (Stats, error) {
 			someProvider := Provider{
 				Name:  u.Name,
 				Alias: u.Alias,
+				Link: fmt.Sprintf("https://registry.terraform.io/providers/hashicorp/%s/latest/docs", u.Name),
 			}
 			Final.Providers = append(Final.Providers, someProvider)
 		}
