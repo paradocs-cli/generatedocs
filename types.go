@@ -54,7 +54,6 @@ type Data struct {
 	DataType               string `json:"data_type,omitempty"`
 	ProviderName           string `json:"provider_name,omitempty"`
 	ProviderAlias          string `json:"provider_alias,omitempty"`
-	Senstive               bool   `json:"module_version,omitempty"`
 	SourcePositionFileName string `json:"source_file_name,omitempty"`
 	SourcePositionLine     string `json:"source_position_line,omitempty"`
 	Link string

@@ -93,7 +93,6 @@ const TerraDocGeneric = `
 <th>Data Type</th>
 <th>Provider Name</th>
 <th>Provider Alias</th>
-<th>Sensitive</th>
 <th>File Name</th>
 <th>Line Number</th>
 </tr>
@@ -105,7 +104,6 @@ const TerraDocGeneric = `
 <td>{{.DataType}}</td>
 <td>{{.ProviderName}}</td>
 <td>{{.ProviderAlias}}</td>
-<td>{{.Sensitive}}</td>
 <td>{{.SourcePositionFileName}}</td>
 <td>{{.SourcePositionLine}}</td>
 </tr>
