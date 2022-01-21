@@ -81,3 +81,122 @@ type RepoInfo struct {
 	Directories []Dirs
 	Files []File
 }
+
+type TfcState struct {
+	Data struct {
+		Id         string `json:"id"`
+		Type       string `json:"type"`
+		Attributes struct {
+			CreatedAt              time.Time `json:"created-at"`
+			Size                   int       `json:"size"`
+			HostedStateDownloadUrl string    `json:"hosted-state-download-url"`
+			Modules                struct {
+			} `json:"modules"`
+			Providers struct {
+			} `json:"providers"`
+			Resources          []struct{
+				Module string `json:"module,omitempty"`
+				Mode string `json:"mode"`
+				Type string `json:"type"`
+				Name string `json:"name"`
+				Provider string `json:"provider"`
+				Instances []struct{
+					SchemaVersion int `json:"schema_version"`
+					IndexKey string `json:"index_key,omitempty"`
+					Attributes struct{
+						Id string `json:"id,omitempty"`
+						Location string `json:"location,omitempty"`
+						Name string `json:"name,omitempty"`
+						Dependencies []string `json:"dependencies,omitempty"`
+					} `json:"attributes,omitempty"`
+				} `json:"instances,omitempty"`
+			} `json:"resources"`
+			ResourcesProcessed bool          `json:"resources-processed"`
+			Serial             int           `json:"serial"`
+			StateVersion       int           `json:"state-version"`
+			TerraformVersion   string        `json:"terraform-version"`
+			VcsCommitUrl       interface{}   `json:"vcs-commit-url"`
+			VcsCommitSha       interface{}   `json:"vcs-commit-sha"`
+		} `json:"attributes"`
+		Relationships struct {
+			Run struct {
+				Data interface{} `json:"data"`
+			} `json:"run"`
+			CreatedBy struct {
+				Data struct {
+					Id   string `json:"id"`
+					Type string `json:"type"`
+				} `json:"data"`
+				Links struct {
+					Self string `json:"self"`
+				} `json:"links"`
+			} `json:"created-by"`
+			Workspace struct {
+				Data struct {
+					Id   string `json:"id"`
+					Type string `json:"type"`
+				} `json:"data"`
+			} `json:"workspace"`
+			Outputs struct {
+				Data  []interface{} `json:"data"`
+				Links struct {
+					Related string `json:"related"`
+				} `json:"links"`
+			} `json:"outputs"`
+		} `json:"relationships"`
+		Links struct {
+			Self string `json:"self"`
+		} `json:"links"`
+	} `json:"data"`
+}
+
+type CloudState struct {
+	Version          int         `json:"version"`
+	TerraformVersion string      `json:"terraform_version"`
+	Serial           int         `json:"serial"`
+	Lineage          string      `json:"lineage"`
+	Outputs          interface{} `json:"outputs"`
+	Resources        []struct{
+		Module string `json:"module,omitempty"`
+		Mode string `json:"mode"`
+		Type string `json:"type"`
+		Name string `json:"name"`
+		Provider string `json:"provider"`
+		Instances []struct{
+			SchemaVersion int `json:"schema_version"`
+			IndexKey string `json:"index_key,omitempty"`
+			Attributes struct{
+				Id string `json:"id,omitempty"`
+				Location string `json:"location,omitempty"`
+				Name string `json:"name,omitempty"`
+				Dependencies []string `json:"dependencies,omitempty"`
+			} `json:"attributes,omitempty"`
+		} `json:"instances,omitempty"`
+	} `json:"resources"`
+}
+
+type StateProviders struct {
+	Azure struct {
+		StorageAccountName string
+		ContainerName string
+		BlobName string
+		SasToken string
+	}
+	Aws struct {
+		AccessKey string
+		SecretAccessKey string
+		SessionToken string
+		BucketName string
+		Object string
+		Region string
+	}
+	TerraformCloud struct {
+		ApiToken string
+		WorkspaceId string
+	}
+	GoogleCloud struct {
+		BucketName string
+		ObjectName string
+		Oauth2Token string
+	}
+}
