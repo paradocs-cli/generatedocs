@@ -31,7 +31,7 @@ func WriteMarkdownTerra(w Stats) os.File {
 
 //WriteMarkdownCloudState generates a README which recursively documents all terraform state resources from the specified backend
 //WriteMarkdownCloudState does template execution to write the file
-func WriteMarkdownCloudState( st CloudState) os.File {
+func WriteMarkdownCloudState(st CloudState) os.File {
 
 	tmpls := template.New("md")
 	template.Must(tmpls.Parse(TerraStateDocCloud))
