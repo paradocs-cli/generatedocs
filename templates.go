@@ -4,151 +4,45 @@ package generate_docs
 const TerraStateDocCloud = `
 <h1>State Documentation:</h1> 
 
-<h2>Variables:</h2>
+<h2>State Stats:</h2>
 <table>
 <thead>
 <tr>
-<th>Variable Name</th>
-<th>Variable Type</th>
-<th>Variable Default</th>
-<th>Variable Description</th>
-<th>Variable Required</th>
-<th>Variable Sensitive</th>
-<th>File Name</th>
-<th>Line Number</th>
+<th>Version</th>
+<th>Terraform Version</th>
+<th>Serial</th>
+<th>Lineage</th>
 </tr>
 </thead>
-{{range .Vars}}
 <tbody>
 <tr>
-<td>{{.VarName}}</td>
-<td>{{.VarType}}</td>
-<td>{{.VarDescription}}</td>
-<td>{{.VarDefault}}</td>
-<td>{{.VarRequired}}</td>
-<td>{{.VarSensitive}}</td>
-<td>{{.SourcePositionFileName}}</td>
-<td>{{.SourcePositionLine}}</td>
+<td>{{.Version}}</td>
+<td>{{.TerraformVersion}}</td>
+<td>{{.Serial}}</td>
+<td>{{.Lineage}}</td>
 </tr>
 </tbody>
-{{end}}
 </table>
 
 <h2>Resources:</h2>
 <table>
 <thead>
 <tr>
+<th>Module</th>
 <th>Mode</th>
 <th>Type</th>
 <th>Name</th>
-<th>Provider Name</th>
-<th>Provider Alias</th>
-<th>File Name</th>
-<th>Line Number</th>
+<th>Provider</th>
 </tr>
 </thead>
 {{range .Resources}}
 <tbody>
 <tr>
+<td>{{.Module}}</td>
 <td>{{.Mode}}</td>
-<td><a href="{{.Link}}">{{.Type}}</td>
+<td>{{.Type}}</td>
 <td>{{.Name}}</td>
-<td>{{.ProviderName}}</td>
-<td>{{.ProviderAlias}}</td>
-<td>{{.SourcePositionFileName}}</td>
-<td>{{.SourcePositionLine}}</td>
-</tr>
-</tbody>
-{{end}}
-</table>
-
-<h2>Modules:</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Module Source</th>
-<th>Version</th>
-<th>File Name</th>
-<th>Line Number</th>
-</tr>
-</thead>
-{{range .Modules}}
-<tbody>
-<tr>
-<td>{{.Name}}</td>
-<td>{{.ModSource}}</td>
-<td>{{.Version}}</td>
-<td>{{.SourcePositionFileName}}</td>
-<td>{{.SourcePositionLine}}</td>
-</tr>
-</tbody>
-{{end}}
-</table>
-
-<h2>Data Resources:</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Data Type</th>
-<th>Provider Name</th>
-<th>Provider Alias</th>
-<th>File Name</th>
-<th>Line Number</th>
-</tr>
-</thead>
-{{range .Datas}}
-<tbody>
-<tr>
-<td>{{.Name}}</td>
-<td><a href="{{.Link}}">{{.DataType}}</a></td>
-<td>{{.ProviderName}}</td>
-<td>{{.ProviderAlias}}</td>
-<td>{{.SourcePositionFileName}}</td>
-<td>{{.SourcePositionLine}}</td>
-</tr>
-</tbody>
-{{end}}
-</table>
-
-<h2>Providers:</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Alias</th>
-</tr>
-</thead>
-{{range .Providers}}
-<tbody>
-<tr>
-<td><a href="{{.Link}}">{{.Name}}</a></td>
-<td>{{.Alias}}</td>
-</tr>
-</tbody>
-{{end}}
-</table>
-
-<h2>Outputs:</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Sensitive</th>
-<th>File Name</th>
-<th>Line Number</th>
-</tr>
-</thead>
-{{range .Outputs}}
-<tbody>
-<tr>
-<td>{{.Name}}</td>
-<td>{{.Description}}</td>
-<td>{{.Sensitive}}</td>
-<td>{{.SourcePositionFileName}}</td>
-<td>{{.SourcePositionLine}}</td>
+<td>{{.Provider}}</td>
 </tr>
 </tbody>
 {{end}}
