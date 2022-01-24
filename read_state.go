@@ -92,7 +92,7 @@ func GetTfcState(s StateProviders) (CloudState,error) {
 	return n, nil
 }
 
-//ManipulateTfcState takes an argukment of TfcState and returns cloud state by doing a GET request on the hosted state download url object
+//ManipulateTfcState takes an argument of TfcState and returns cloud state by doing a GET request on the hosted state download url object
 func ManipulateTfcState(t TfcState)(CloudState,error){
 	var s CloudState
 	u := fmt.Sprintf("%s", t.Data.Attributes.HostedStateDownloadUrl)
@@ -130,7 +130,7 @@ func ManipulateTfcState(t TfcState)(CloudState,error){
 func GetAzState(s StateProviders) (CloudState, error) {
 	var state CloudState
 
-	u := fmt.Sprintf("https://%s.blob.core.windows.net/%s/%s%s", s.Azure.StorageAccountName, s.Azure.ContainerName, s.Azure.BlobName, s.Azure.SasToken)
+	u := fmt.Sprintf("https://%s.blob.core.windows.net/%s/%s?%s", s.Azure.StorageAccountName, s.Azure.ContainerName, s.Azure.BlobName, s.Azure.SasToken)
 
 
 	request, err := http.NewRequest("GET", u, nil)
