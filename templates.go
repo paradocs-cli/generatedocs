@@ -24,7 +24,7 @@ const TerraStateDocCloud = `
 </tbody>
 </table>
 
-<h2>Resources:</h2>
+<h2>Resource Data:</h2>
 <table>
 <thead>
 <tr>
@@ -43,6 +43,29 @@ const TerraStateDocCloud = `
 <td>{{.Type}}</td>
 <td>{{.Name}}</td>
 <td>{{.Provider}}</td>
+<td>
+<table>
+<h4 align="center">Instances</h4>
+<thead>
+<tr>
+<th>ID</th>
+<th>Location</th>
+<th>Name</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+{{range .Instances}}
+<tbody>
+<tr>
+<td>{{.Id}}</td>
+<td>{{.Location}}</td>
+<td>{{.Name}}</td>
+<td>{{.Dependencies}}</td>
+</tr>
+</tbody>
+{{end}}
+</table>
+</td>
 </tr>
 </tbody>
 {{end}}
