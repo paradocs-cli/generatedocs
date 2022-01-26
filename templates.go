@@ -65,6 +65,7 @@ const TerraStateDocCloud = `
 <ul>
 {{range .Attributes.Dependencies}}
 <li>{{.}}</li>
+{{end}}
 </ul>
 </td>
 </tr>
