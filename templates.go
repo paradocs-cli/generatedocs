@@ -57,10 +57,10 @@ const TerraStateDocCloud = `
 {{range .Instances}}
 <tbody>
 <tr>
-<td>{{.Id}}</td>
-<td>{{.Location}}</td>
-<td>{{.Name}}</td>
-<td>{{.Dependencies}}</td>
+<td>{{.Attributes.Id}}</td>
+<td>{{.Attributes.Location}}</td>
+<td>{{.Attributes.Name}}</td>
+<td>{{.Attributes.Dependencies}}</td>
 </tr>
 </tbody>
 {{end}}
