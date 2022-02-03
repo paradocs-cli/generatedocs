@@ -1,4 +1,4 @@
-module github.com/johhess40/generatedocs
+module github.com/paradocs-cli/generatedocs
 
 go 1.16
 
