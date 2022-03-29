@@ -16,10 +16,8 @@ func WriteMarkdownTerra(w Stats, o string) os.File {
 	if len(o) > 0 {
 		f, err := os.Create(fmt.Sprintf("%s/TERRAFORM.%s", o, tmpls.Name()))
 		if err != nil {
-			if err != nil {
-				fmt.Printf("%s", err.Error())
-				os.Exit(1)
-			}
+			fmt.Printf("%s", err.Error())
+			os.Exit(1)
 		}
 
 		err = tmpls.Execute(f, w)
